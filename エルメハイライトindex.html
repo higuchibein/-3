@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>【静止画インフォグラフィック】L Message導入成果事例</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            background-color: #f0fdf4; /* 薄い緑の背景 */
+        }
+        .case-card {
+            background-color: white;
+            border-radius: 1rem;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            padding: 2.5rem 2rem;
+            text-align: center;
+            border-top: 8px solid;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .case-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        }
+        .card-icon {
+            font-size: 3.5rem;
+            line-height: 1;
+            margin-bottom: 1rem;
+        }
+        .industry-name {
+            font-weight: 700;
+            color: #1f2937;
+            font-size: 1.25rem;
+        }
+        .impact-number {
+            font-weight: 900;
+            font-size: 5rem;
+            line-height: 1.1;
+            margin: 1.5rem 0;
+        }
+        .impact-number .unit {
+            font-size: 2.5rem;
+            vertical-align: middle;
+            margin-left: 0.25rem;
+        }
+        .impact-label {
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: #374151;
+        }
+        .quote {
+            font-size: 0.875rem;
+            color: #4b5563;
+            margin-top: 1.5rem;
+            border-left: 3px solid #6ee7b7;
+            padding-left: 1rem;
+            text-align: left;
+        }
+    </style>
+</head>
+<body class="p-4 md:p-8">
+
+    <div class="w-full max-w-7xl mx-auto text-center">
+        <h1 class="text-4xl md:text-5xl font-black text-green-800 mb-4">数字が語る、L Messageの実力</h1>
+        <p class="text-lg text-gray-600 mb-12 max-w-3xl mx-auto">多くのビジネスが、L Messageと共に成長を加速させています。次はあなたの番です。</p>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 md:gap-12">
+            <!-- Case Study 1: Online School -->
+            <div class="case-card border-green-500">
+                <div class="card-icon">🎓</div>
+                <h2 class="industry-name">オンラインスクール運営</h2>
+                <div class="impact-number text-green-600">
+                    10<span class="unit">倍</span>
+                </div>
+                <h3 class="impact-label">売上アップ</h3>
+                 <div class="w-full h-20 mt-4 flex justify-center items-end">
+                    <div class="h-4 w-6 bg-gray-300 rounded-t-sm"></div>
+                    <div class="h-16 w-6 bg-green-500 rounded-t-sm ml-2"></div>
+                </div>
+                <p class="quote">
+                    「個別対応に追われる日々から解放され、ステップ配信で見込み客を自動育成。結果、説明会への申込数が3倍になり、売上も10倍に！もっと早く導入すればよかったです。」
+                </p>
+                <div class="mt-8">
+                     <a href="#" class="text-green-600 font-semibold hover:underline">導入事例の詳細を見る &rarr;</a>
+                </div>
+            </div>
+
+            <!-- Case Study 2: Cram School -->
+            <div class="case-card border-yellow-500">
+                <div class="card-icon">🏫</div>
+                <h2 class="industry-name">地域密着型 学習塾</h2>
+                <div class="impact-number text-yellow-600">
+                    3<span class="unit">倍</span>
+                </div>
+                <h3 class="impact-label">新規問い合わせ増</h3>
+                <div class="w-full h-20 mt-4 flex justify-center items-end">
+                    <div class="h-6 w-6 bg-gray-300 rounded-full flex items-center justify-center text-xs">前</div>
+                    <div class="h-16 w-16 bg-yellow-500 rounded-full flex items-center justify-center text-white font-bold ml-2 text-xl">3倍</div>
+                </div>
+                <p class="quote">
+                    「保護者へのお知らせや生徒からの質問対応を効率化。自動応答とセグメント配信が本当に役立っています。結果、新規の問い合わせが3倍に増え、入塾率も向上しました。」
+                </p>
+                 <div class="mt-8">
+                     <a href="#" class="text-yellow-600 font-semibold hover:underline">導入事例の詳細を見る &rarr;</a>
+                </div>
+            </div>
+
+            <!-- Case Study 3: Beauty Salon Chain -->
+            <div class="case-card border-teal-500">
+                <div class="card-icon">💇‍♀️</div>
+                <h2 class="industry-name">美容室チェーン</h2>
+                <div class="impact-number text-teal-600">
+                    15<span class="unit">%</span>
+                </div>
+                <h3 class="impact-label">リピート率アップ</h3>
+                 <div class="w-full h-20 mt-4">
+                     <canvas id="repeatRateChart"></canvas>
+                 </div>
+                <p class="quote">
+                    「各店舗でバラバラだったLINE運用を標準化。顧客情報の一元管理とターゲットに合わせた情報配信で、友だち追加数も月平均120名以上増加し、リピート率も15%アップしました。」
+                </p>
+                 <div class="mt-8">
+                     <a href="#" class="text-teal-600 font-semibold hover:underline">導入事例の詳細を見る &rarr;</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    try {
+        const repeatRateChartCtx = document.getElementById('repeatRateChart');
+        if (repeatRateChartCtx) {
+            new Chart(repeatRateChartCtx.getContext('2d'), {
+                type: 'line',
+                data: {
+                    labels: ['導入前', '導入後'],
+                    datasets: [{
+                        label: 'リピート率 (%)',
+                        data: [100, 115], // 15%アップを表現
+                        borderColor: '#14B8A6',
+                        backgroundColor: 'rgba(20, 184, 166, 0.1)',
+                        fill: true,
+                        tension: 0.4,
+                        pointRadius: 5,
+                        pointBackgroundColor: '#14B8A6',
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { display: false },
+                        tooltip: {
+                             callbacks: {
+                                label: function(context) {
+                                    if(context.dataIndex === 0) return ' 導入前リピート率';
+                                    return ' 15% アップ！';
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        x: { display: false },
+                        y: { display: false, beginAtZero: true, max: 130 }
+                    }
+                }
+            });
+        }
+    } catch(e) {
+        console.error("Error initializing chart: ", e);
+    }
+});
+</script>
+</body>
+</html>
